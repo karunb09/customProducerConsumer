@@ -1,4 +1,4 @@
-package com.karun.kafka;
+package edu.nwmissouri.karun.kafka;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -57,7 +57,7 @@ public class CustomProducer {
         runProperties.getProperty("KEY_SERIALIZER_CLASS_CONFIG"));
     configProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
         runProperties.getProperty("VALUE_SERIALIZER_CLASS_CONFIG"));
-    org.apache.kafka.clients.producer.Producer<String, String> producer = new KafkaProducer<String, String>(configProperties);
+    org.apache.kafka.clients.producer.Producer producer = new KafkaProducer(configProperties);
 
     System.out.println("==========================================");
     System.out.println("You must start a consumer to see messages.");
@@ -69,7 +69,7 @@ public class CustomProducer {
     int i = 1;
     List<Status> statuses = new ArrayList<Status>();
     try {
-      Paging page = new Paging(pageno, 20);
+      Paging page = new Paging(pageno, 10);
       statuses.addAll(twitter.getUserTimeline(user, page));
       System.out.println("Total: " + statuses.size());
       for (Status status : statuses) {

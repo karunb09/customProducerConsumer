@@ -1,4 +1,4 @@
-package com.karun.kafka;
+package edu.nwmissouri.isl.karun.kafka;
 
 import java.io.File;
 import java.io.FileInputStream;
